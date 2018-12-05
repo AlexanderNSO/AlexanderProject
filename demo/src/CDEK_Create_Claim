@@ -1,0 +1,19 @@
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+import time
+
+driver = webdriver.Chrome(executable_path=
+                          r"C:\Program Files\JetBrains\PyCharm Community Edition 2018.3\bin\chromedriver.exe")
+driver.get("https://navfront.qa2.cdek.ru/#/viewLogin")
+driver.implicitly_wait(10)
+
+User = driver.find_element_by_xpath(u"(.//*[normalize-space(text()) and normalize-space(.)='Экспресс-Курьер 5'])[1]/following::input[2]").send_keys("tester_nsk")
+
+Password = driver.find_element_by_id("password")
+Password.clear()
+Password.send_keys("123", Keys.ENTER)
+
+Menu_client = driver.find_element_by_id("menuClient")
+Menu_client.click()
+client_claim = driver.find_element_by_id("menuClientClaim")
+client_claim.click()
